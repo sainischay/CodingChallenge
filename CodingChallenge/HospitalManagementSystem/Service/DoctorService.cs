@@ -11,7 +11,7 @@ namespace HospitalManagementSystem.Service
     internal class DoctorService:IDoctorService
     {
         IDoctorRepository _doctorRepository = new DoctorRepository();
-        public bool CreateDoctor()
+        public string CreateDoctor()
         {
             try
             {
@@ -26,13 +26,13 @@ namespace HospitalManagementSystem.Service
                 doctor.ContactNumber = Console.ReadLine();
                 int status = _doctorRepository.CreateDoctor(doctor);
                 if (status > 0)
-                    return true;
-                return false;
+                    return "Record Created";
+                return "Record Not Created";
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false;
+                return "Record not created";
             }
         }
 
@@ -42,7 +42,7 @@ namespace HospitalManagementSystem.Service
             return doctors;
         }
 
-        public bool UpdateDoctor()
+        public string UpdateDoctor()
         {
             try
             {
@@ -61,17 +61,17 @@ namespace HospitalManagementSystem.Service
                 doctor.ContactNumber = Console.ReadLine();
                 int status = _doctorRepository.UpdateDoctor(doctor);
                 if (status > 0)
-                    return true;
-                return false;
+                    return "Record Updated";
+                return "Record Not Updated";
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false;
+                return "Record Not Updated";
             }
         }
 
-        public bool DeleteDoctor()
+        public string DeleteDoctor()
         {
             try
             {
@@ -81,13 +81,13 @@ namespace HospitalManagementSystem.Service
                 int doctorId = int.Parse(Console.ReadLine());
                 int status = _doctorRepository.DeleteDoctor(doctorId);
                 if (status > 0)
-                    return true;
-                return false;
+                    return "Record Deleted";
+                return "Record Not Deleted";
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false;
+                return "Record Not deleted";
             }
         }
     }

@@ -63,7 +63,7 @@ namespace HospitalManagementSystem.Service
             }
         }
 
-        public bool ScheduleAppointment()
+        public string ScheduleAppointment()
         {
             try
             {
@@ -80,18 +80,18 @@ namespace HospitalManagementSystem.Service
                 appointment.Description = Console.ReadLine();
                 int status = _hospitalRepository.ScheduleAppointment(appointment);
                 if (status > 0)
-                    return true;
+                    return "Appointment Scheduled";
                 else
-                    return false;
+                    return "Appointment Not Scheduled";
             }
             catch ( Exception ex )
             {
                 Console.WriteLine(ex.Message);
-                return false;
+                return "Appointment Not Scheduled";
             }
         }
 
-        public bool UpdateAppointment()
+        public string UpdateAppointment()
         {
             try
             {
@@ -99,8 +99,10 @@ namespace HospitalManagementSystem.Service
                 Appointment appointment = new Appointment();
                 Console.WriteLine("Enter AppointmentId");
                 appointment.AppointmentId = int.Parse(Console.ReadLine());
+                PrintingService.GetAllPatients();
                 Console.WriteLine("Enter PatientId");
                 appointment.PatientId = int.Parse(Console.ReadLine());
+                PrintingService.GetAllDoctors();
                 Console.WriteLine("Enter DoctorId");
                 appointment.DoctorId = int.Parse(Console.ReadLine());
                 Console.WriteLine("Enter AppointmentDate");
@@ -109,18 +111,18 @@ namespace HospitalManagementSystem.Service
                 appointment.Description = Console.ReadLine();
                 int status = _hospitalRepository.UpdateAppointment(appointment);
                 if (status > 0)
-                    return true;
+                    return "Appointment Updated";
                 else
-                    return false;
+                    return "Appointment Not Updated";
             }
             catch( Exception ex )
             {
                 Console.WriteLine(ex.Message);
-                return false;
+                return "Appointment Not Updated";
             }
         }
 
-        public bool CancelAppointment()
+        public string CancelAppointment()
         {
             try
             {
@@ -129,11 +131,11 @@ namespace HospitalManagementSystem.Service
                 int appointmentId = int.Parse(Console.ReadLine());
                 int status = _hospitalRepository.CancelAppointment(appointmentId);
                 if (status > 0)
-                    return true;
+                    return "Appointment canceled";
                 else
-                    return false;
+                    return "Appointment not canceled";
             }
-            catch ( Exception ex ) { Console.WriteLine( ex.Message); return false; }
+            catch ( Exception ex ) { Console.WriteLine( ex.Message); return "Appointment not canceled"; }
         }
     }
 }

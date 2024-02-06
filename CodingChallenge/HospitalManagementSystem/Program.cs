@@ -97,7 +97,7 @@ namespace HospitalManagementSystem
                                     Console.WriteLine(_hospitalService.ScheduleAppointment());
                                     break;
                                 case 5:
-                                    Console.WriteLine(_hospitalService.UpdateAppointment);
+                                    Console.WriteLine(_hospitalService.UpdateAppointment());
                                     break;
                                 case 6:
                                     Console.WriteLine(_hospitalService.CancelAppointment());

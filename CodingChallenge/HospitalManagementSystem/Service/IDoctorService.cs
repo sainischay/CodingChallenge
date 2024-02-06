@@ -9,12 +9,12 @@ namespace HospitalManagementSystem.Service
 {
     internal interface IDoctorService
     {
-        bool CreateDoctor();
+        string CreateDoctor();
 
         List<Doctor> GetAllDoctors();
 
-        bool UpdateDoctor();
+        string UpdateDoctor();
 
-        bool DeleteDoctor();
+        string DeleteDoctor();
     }
 }

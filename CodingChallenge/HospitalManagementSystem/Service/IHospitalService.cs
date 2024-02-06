@@ -15,10 +15,10 @@ namespace HospitalManagementSystem.Service
 
         List<Appointment> GetAppointmentsForDoctor();
 
-        bool ScheduleAppointment();
+        string ScheduleAppointment();
 
-        bool UpdateAppointment();
+        string UpdateAppointment();
 
-        bool CancelAppointment();
+        string CancelAppointment();
     }
 }
